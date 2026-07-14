@@ -13,15 +13,15 @@ PluginComponent {
     property bool isRunning: false
 
     // Config variables (loaded dynamically from plugin settings)
-    property bool useFlatpak: pluginData.useFlatpak ?? false
-    property bool useGamescope: pluginData.useGamescope ?? true
-    property string gamescopeArgs: pluginData.gamescopeArgs ?? ""
-    property string reopenNormalCmd: pluginData.reopenNormalCmd ?? ""
-    property string extraStartCmd: pluginData.extraStartCmd ?? "dms ipc outputs setProfile BigPicture"
-    property string extraStopCmd: pluginData.extraStopCmd ?? "dms ipc outputs setProfile Main"
-    property string targetAudio: pluginData.targetAudio ?? "AD107"
-    property int targetVolume: pluginData.targetVolume ?? 100
-    property int maxAudioIntentos: pluginData.maxAudioIntentos ?? 10
+    property bool useFlatpak: pluginData.useFlatpak
+    property bool useGamescope: pluginData.useGamescope
+    property string gamescopeArgs: pluginData.gamescopeArgs
+    property string reopenNormalCmd: pluginData.reopenNormalCmd
+    property string extraStartCmd: pluginData.extraStartCmd
+    property string extraStopCmd: pluginData.extraStopCmd
+    property string targetAudio: pluginData.targetAudio
+    property int targetVolume: pluginData.targetVolume
+    property int maxAudioIntentos: pluginData.maxAudioIntentos
 
     layerNamespacePlugin: "steam-toggle"
     popoutWidth: 320
@@ -32,19 +32,7 @@ PluginComponent {
     ccWidgetSecondaryText: isRunning ? "Iniciado" : "Detenido"
     ccWidgetIsActive: isRunning
 
-    function getArgs() {
-        return [
-            root.useFlatpak ? "true" : "false",
-            root.useGamescope ? "true" : "false",
-            root.gamescopeArgs,
-            root.reopenNormalCmd,
-            root.extraStartCmd,
-            root.extraStopCmd,
-            root.targetAudio,
-            root.targetVolume.toString(),
-            root.maxAudioIntentos.toString()
-        ];
-    }
+
 
     Timer {
         id: statusTimer
@@ -66,11 +54,11 @@ PluginComponent {
 
     onCcWidgetToggled: {
         if (!isRunning) {
-            Quickshell.execDetached([root.scriptPath, "start"].concat(getArgs()))
+            Quickshell.execDetached([root.scriptPath, "start"])
             ToastService.showInfo("Steam", "Iniciando Big Picture...")
             root.isRunning = true
         } else {
-            Quickshell.execDetached([root.scriptPath, "stop"].concat(getArgs()))
+            Quickshell.execDetached([root.scriptPath, "stop"])
             ToastService.showInfo("Steam", "Cerrando Steam...")
             root.isRunning = false
         }
@@ -167,7 +155,7 @@ PluginComponent {
                             cursorShape: root.isRunning ? Qt.ArrowCursor : Qt.PointingHandCursor
                             enabled: !root.isRunning
                             onClicked: {
-                                Quickshell.execDetached([root.scriptPath, "start"].concat(root.getArgs()))
+                                Quickshell.execDetached([root.scriptPath, "start"])
                                 ToastService.showInfo("Steam", "Iniciando Big Picture...")
                                 root.isRunning = true
                                 popoutColumn.closePopout()
@@ -209,7 +197,7 @@ PluginComponent {
                             cursorShape: !root.isRunning ? Qt.ArrowCursor : Qt.PointingHandCursor
                             enabled: root.isRunning
                             onClicked: {
-                                Quickshell.execDetached([root.scriptPath, "stop"].concat(root.getArgs()))
+                                Quickshell.execDetached([root.scriptPath, "stop"])
                                 ToastService.showInfo("Steam", "Cerrando Steam...")
                                 root.isRunning = false
                                 popoutColumn.closePopout()
