@@ -17,8 +17,8 @@ PluginComponent {
     property bool useGamescope: pluginData.useGamescope ?? true
     property string gamescopeArgs: pluginData.gamescopeArgs ?? ""
     property string reopenNormalCmd: pluginData.reopenNormalCmd ?? ""
-    property string extraStartCmd: pluginData.extraStartCmd ?? ""
-    property string extraStopCmd: pluginData.extraStopCmd ?? ""
+    property string extraStartCmd: pluginData.extraStartCmd ?? "dms ipc outputs setProfile BigPicture"
+    property string extraStopCmd: pluginData.extraStopCmd ?? "dms ipc outputs setProfile Main"
     property string targetAudio: pluginData.targetAudio ?? "AD107"
     property int targetVolume: pluginData.targetVolume ?? 100
     property int maxAudioIntentos: pluginData.maxAudioIntentos ?? 10

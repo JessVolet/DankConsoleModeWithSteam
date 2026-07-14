@@ -15,14 +15,6 @@ PluginSettings {
         color: Theme.surfaceText
     }
 
-    StyledText {
-        width: parent.width
-        text: "pues bueno, abre steam en codigo."
-        font.pixelSize: Theme.fontSizeSmall
-        color: Theme.surfaceVariantText
-        wrapMode: Text.WordWrap
-    }
-
     ToggleSetting {
         settingKey: "useFlatpak"
         label: "Usar Flatpak"

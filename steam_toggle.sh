@@ -21,7 +21,11 @@ else
 fi
 
 if [ "$USE_GAMESCOPE" = "true" ]; then
-    START_CMD="gamescope $GAMESCOPE_ARGS -- env __NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia $STEAM_BIN -gamepadui"
+    if lspci | grep -qi nvidia || command -v nvidia-smi &>/dev/null; then
+        START_CMD="gamescope $GAMESCOPE_ARGS -- env __NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia $STEAM_BIN -gamepadui"
+    else
+        START_CMD="gamescope $GAMESCOPE_ARGS -- $STEAM_BIN -gamepadui"
+    fi
 else
     START_CMD="$STEAM_BIN -tenfoot -fullscreen"
 fi
@@ -56,7 +60,7 @@ case "$ACTION" in
         set_audio &
         sleep 5
         eval "$START_CMD" &
-        "$0" monitor > /dev/null 2>&1 &
+        "$0" monitor "$USE_FLATPAK" "$USE_GAMESCOPE" "$GAMESCOPE_ARGS" "$REOPEN_NORMAL_CMD" "$EXTRA_START_CMD" "$EXTRA_STOP_CMD" "$TARGET_AUDIO" "$TARGET_VOLUME" "$MAX_AUDIO_INTENTOS" > /dev/null 2>&1 &
         ;;
     stop)
         pkill -f "steam_toggle.sh monitor" 2>/dev/null
@@ -67,7 +71,13 @@ case "$ACTION" in
         is_running && exit 0 || exit 1
         ;;
     monitor)
-        sleep 5
+        # Esperar hasta que Steam comience a ejecutarse (máximo 20 segundos)
+        local start_timeout=20
+        while ! is_running && [ $start_timeout -gt 0 ]; do
+            sleep 1
+            ((start_timeout--))
+        done
+        # Monitorear hasta que se detenga
         while is_running; do
             sleep 2
         done
