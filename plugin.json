@@ -1,0 +1,11 @@
+{
+  "id": "steamToggle",
+  "name": "Steam Big Picture",
+  "description": "Interruptor para reiniciar Steam en modo Big Picture",
+  "version": "1.0.0",
+  "author": "Voletst",
+  "icon": "sports_esports",
+  "type": "widget",
+  "component": "./SteamToggle.qml",
+  "permissions": ["process"]
+}
