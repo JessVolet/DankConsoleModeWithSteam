@@ -7,5 +7,6 @@
   "icon": "sports_esports",
   "type": "widget",
   "component": "./SteamToggle.qml",
-  "permissions": ["process"]
+  "settings": "./SteamToggleSettings.qml",
+  "permissions": ["process", "settings_read", "settings_write"]
 }
