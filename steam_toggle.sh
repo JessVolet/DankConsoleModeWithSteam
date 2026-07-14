@@ -1,5 +1,5 @@
 #!/bin/bash
-# Control script for Steam Toggle plugin (Optimized)
+# Control script for Steam Toggle plugin (Optimized with Audio features)
 
 export ACTION="$1"
 export USE_FLATPAK="${2:-false}"
@@ -8,6 +8,9 @@ export GAMESCOPE_ARGS="$4"
 export REOPEN_NORMAL_CMD="$5"
 export EXTRA_START_CMD="$6"
 export EXTRA_STOP_CMD="$7"
+export TARGET_AUDIO="$8"
+export TARGET_VOLUME="${9:-100}"
+export MAX_AUDIO_INTENTOS="${10:-10}"
 
 if [ "$USE_FLATPAK" = "true" ]; then
     STEAM_BIN="flatpak run com.valvesoftware.Steam"
@@ -27,6 +30,21 @@ is_running() {
     pgrep -x "steam" > /dev/null || pgrep -x "steamwebhelper" > /dev/null
 }
 
+set_audio() {
+    [ -z "$TARGET_AUDIO" ] && return
+    local intento=0
+    while [ $intento -lt "$MAX_AUDIO_INTENTOS" ]; do
+        local salida
+        salida=$(dms ipc call audio cycleoutput 2>/dev/null)
+        if [[ "$salida" == *"$TARGET_AUDIO"* ]]; then
+            dms ipc call audio setvolume "$TARGET_VOLUME" 2>/dev/null
+            break
+        fi
+        ((intento++))
+        sleep 0.2
+    done
+}
+
 case "$ACTION" in
     start)
         pkill -f "steam_toggle.sh monitor" 2>/dev/null
@@ -35,6 +53,7 @@ case "$ACTION" in
             sleep 2
         fi
         [ -n "$EXTRA_START_CMD" ] && eval "$EXTRA_START_CMD"
+        set_audio &
         sleep 5
         eval "$START_CMD" &
         "$0" monitor > /dev/null 2>&1 &

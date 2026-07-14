@@ -19,6 +19,9 @@ PluginComponent {
     property string reopenNormalCmd: pluginData.reopenNormalCmd ?? ""
     property string extraStartCmd: pluginData.extraStartCmd ?? ""
     property string extraStopCmd: pluginData.extraStopCmd ?? ""
+    property string targetAudio: pluginData.targetAudio ?? "AD107"
+    property int targetVolume: pluginData.targetVolume ?? 100
+    property int maxAudioIntentos: pluginData.maxAudioIntentos ?? 10
 
     layerNamespacePlugin: "steam-toggle"
     popoutWidth: 320
@@ -36,7 +39,10 @@ PluginComponent {
             root.gamescopeArgs,
             root.reopenNormalCmd,
             root.extraStartCmd,
-            root.extraStopCmd
+            root.extraStopCmd,
+            root.targetAudio,
+            root.targetVolume.toString(),
+            root.maxAudioIntentos.toString()
         ];
     }
 

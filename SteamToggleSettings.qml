@@ -64,4 +64,30 @@ PluginSettings {
         description: "Comando extra ejecutado al cerrarse Steam para restaurar configuraciones"
         defaultValue: "dms ipc outputs setProfile Main"
     }
+
+    StringSetting {
+        settingKey: "targetAudio"
+        label: "Dispositivo de Audio Objetivo"
+        description: "Parte del nombre del dispositivo de audio a buscar (ej. AD107)"
+        defaultValue: "AD107"
+    }
+
+    SliderSetting {
+        settingKey: "targetVolume"
+        label: "Volumen Objetivo"
+        description: "Volumen deseado para el dispositivo de audio"
+        defaultValue: 100
+        minimum: 0
+        maximum: 100
+        unit: "%"
+    }
+
+    SliderSetting {
+        settingKey: "maxAudioIntentos"
+        label: "Intentos de Búsqueda"
+        description: "Número máximo de intentos para encontrar el dispositivo de audio"
+        defaultValue: 10
+        minimum: 1
+        maximum: 30
+    }
 }
