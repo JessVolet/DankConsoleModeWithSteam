@@ -2,6 +2,8 @@
 
 Un plugin de tipo widget para DankMaterialShell que permite ejecutar Steam en modo Big Picture con argumentos personalizados, comandos de inicio y enrutamiento automático de audio.
 
+![Panel de Control de Steam](./screenshot.png)
+
 ## Acerca de
 
 Steam Big Picture Toggle proporciona un interruptor simple en tu barra de herramientas o panel de control para cambiar Steam al modo Big Picture. Permite ejecutar Steam de forma nativa o mediante Flatpak, opcionalmente dentro de Gamescope con argumentos de ventana personalizados.
