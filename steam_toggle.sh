@@ -12,7 +12,7 @@ get_setting() {
     local default="$2"
     if [ -f "$SETTINGS_FILE" ] && command -v jq &>/dev/null; then
         local val
-        val=$(jq -r ".steamToggle.\"$key\"" "$SETTINGS_FILE" 2>/dev/null)
+        val=$(jq -r ".DankConsoleSteam.\"$key\"" "$SETTINGS_FILE" 2>/dev/null)
         if [ "$val" != "null" ]; then
             echo "$val"
             return

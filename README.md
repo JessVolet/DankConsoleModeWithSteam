@@ -1,29 +1,45 @@
-# Steam Big Picture Toggle Plugin
+# Steam Big Picture Toggle
 
-A widgets plugin for **DankMaterialShell** (DMS) that provides a toggle switch to run Steam in Big Picture mode with custom settings, gamescope configurations, and automated audio routing.
+A DankMaterialShell widget plugin to run Steam in Big Picture mode with custom arguments, startup commands, and automated audio routing.
 
-## Features
+## About
 
-- **Toggle Steam Big Picture**: Easily start and stop Steam Big Picture mode from your bar or control center.
-- **Flatpak & Native Support**: Supports running Steam either natively or via Flatpak.
-- **Gamescope Integration**: Run Steam inside Gamescope with custom size and display options (automatically optimizes for NVIDIA GPUs using prime offload environment variables).
-- **Custom Hook Commands**: Run custom shell commands on startup and teardown (e.g., switching monitor profiles using `dms ipc`).
-- **Automated Audio Routing**: Automatically cycles through audio outputs on launch to find a target audio device (e.g., your TV) and configures the volume.
-- **Reopen Normal Steam**: Optionally restart Steam in normal desktop mode once you exit Big Picture.
+Steam Big Picture Toggle provides a simple toggle button on your bar or control center to switch Steam into Big Picture mode. It supports running Steam natively or via Flatpak, optionally inside Gamescope with custom window arguments.
 
-## Configuration Options
+This plugin integrates with shell features — you can specify custom startup and shutdown commands (such as switching monitor output profiles via `dms ipc`) and automatically target specific audio devices (like an HDMI TV) and set the volume.
 
-Configure these options directly in the DankMaterialShell settings interface:
+## Install
 
-- **Use Flatpak**: Toggle to run Steam via Flatpak (`com.valvesoftware.Steam`) or native.
-- **Use Gamescope**: Toggle to run Steam inside Gamescope.
-- **Gamescope Arguments**: Extra window parameters for Gamescope (e.g. `-W 1920 -H 1080 -f -e`).
-- **Command on Close**: Program to run when Big Picture exits (e.g., `steam` to reopen the desktop UI).
-- **Extra Startup / Shutdown Commands**: Custom scripts or DMS IPC commands to run when starting/stopping Steam.
-- **Target Audio Device / Volume**: Cycle through audio devices to find one matching a specific name (e.g., `HDMI` or `AD107`) and set the desired volume.
+### Plugin manager
 
-## Internal Architecture
+The plugin can be installed from the plugin browser in DankMaterialShell.
 
-This plugin consists of two main parts:
-1. **`SteamToggle.qml` & `SteamToggleSettings.qml`**: Renders the toggle widgets, popout controls, and manages UI configurations.
-2. **`steam_toggle.sh`**: A background control script that manages launching, monitoring, and cleaning up Steam processes. It reads current settings directly from DMS configuration (`~/.config/DankMaterialShell/plugin_settings.json`).
+### Manual install
+
+1. Download or clone this repository.
+2. Extract or symlink it into your DankMaterialShell plugins directory:
+
+```bash
+ln -sf /path/to/DankConsoleModeWithSteam "${XDG_CONFIG_HOME:-$HOME/.config}/DankMaterialShell/plugins/SteamToggle"
+```
+
+3. Open DankMaterialShell Settings → Plugins, click "Scan for Plugins", and enable **Steam Big Picture**.
+4. Add the widget to your DankBar widgets list.
+
+## IPC Commands
+
+Control the toggle via DMS IPC:
+
+| Command | Description |
+| --- | --- |
+| `dms ipc call plugins reload DankConsoleSteam` | Reload the plugin at runtime |
+
+## Customization
+
+Configure the following settings in DMS Settings under **Steam Big Picture Settings**:
+- **Use Flatpak**: Run Steam via Flatpak (`com.valvesoftware.Steam`) or natively.
+- **Use Gamescope**: Run Steam inside Gamescope.
+- **Gamescope Arguments**: Arguments for Gamescope window (e.g., `-W 1920 -H 1080 -f -e`).
+- **Command on Close**: Program to run when Big Picture exits (e.g., `steam` to reopen normal desktop client).
+- **Extra Startup / Shutdown Commands**: Command hooks executed before start and after exit (e.g. `dms ipc outputs setProfile BigPicture`).
+- **Target Audio Device / Volume / Attempts**: Target audio device name, volume, and search retries to automatically route audio to the gaming screen on startup.

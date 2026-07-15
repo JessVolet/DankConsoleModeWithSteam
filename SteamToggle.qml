@@ -29,10 +29,8 @@ PluginComponent {
 
     ccWidgetIcon: "sports_esports"
     ccWidgetPrimaryText: "Big Picture"
-    ccWidgetSecondaryText: isRunning ? "Iniciado" : "Detenido"
+    ccWidgetSecondaryText: isRunning ? "Started" : "Stopped"
     ccWidgetIsActive: isRunning
-
-
 
     Timer {
         id: statusTimer
@@ -55,11 +53,11 @@ PluginComponent {
     onCcWidgetToggled: {
         if (!isRunning) {
             Quickshell.execDetached([root.scriptPath, "start"])
-            ToastService.showInfo("Steam", "Iniciando Big Picture...")
+            ToastService.showInfo("Steam", "Starting Big Picture...")
             root.isRunning = true
         } else {
             Quickshell.execDetached([root.scriptPath, "stop"])
-            ToastService.showInfo("Steam", "Cerrando Steam...")
+            ToastService.showInfo("Steam", "Closing Steam...")
             root.isRunning = false
         }
     }
@@ -68,7 +66,7 @@ PluginComponent {
         PopoutComponent {
             id: popoutColumn
             headerText: "Steam Control"
-            detailsText: root.isRunning ? "Steam está en ejecución" : "Steam está detenido"
+            detailsText: root.isRunning ? "Steam is running" : "Steam is stopped"
             showCloseButton: true
 
             Column {
@@ -76,7 +74,7 @@ PluginComponent {
                 anchors.horizontalCenter: parent.horizontalCenter
                 spacing: Theme.spacingM
 
-                // Estado actual
+                // Current state
                 StyledRect {
                     width: parent.width
                     height: 50
@@ -101,14 +99,14 @@ PluginComponent {
                             spacing: 1
 
                             StyledText {
-                                text: root.isRunning ? "Steam Big Picture activo" : "Steam inactivo"
+                                text: root.isRunning ? "Steam Big Picture active" : "Steam inactive"
                                 font.pixelSize: Theme.fontSizeMedium
                                 font.weight: Font.Medium
                                 color: Theme.surfaceText
                             }
 
                             StyledText {
-                                text: root.useFlatpak ? "Modo: Flatpak" : "Modo: Nativo"
+                                text: root.useFlatpak ? "Mode: Flatpak" : "Mode: Native"
                                 font.pixelSize: Theme.fontSizeSmall
                                 color: Theme.surfaceVariantText
                             }
@@ -116,12 +114,12 @@ PluginComponent {
                     }
                 }
 
-                // Botones de acción
+                // Action buttons
                 Row {
                     width: parent.width
                     spacing: Theme.spacingS
 
-                    // Botón Iniciar
+                    // Start Button
                     StyledRect {
                         width: (parent.width - Theme.spacingS) / 2
                         height: 40
@@ -141,7 +139,7 @@ PluginComponent {
                             }
 
                             StyledText {
-                                text: "Iniciar"
+                                text: "Start"
                                 font.pixelSize: Theme.fontSizeSmall
                                 font.weight: Font.Bold
                                 color: root.isRunning ? Theme.surfaceVariantText : Theme.primary
@@ -156,14 +154,14 @@ PluginComponent {
                             enabled: !root.isRunning
                             onClicked: {
                                 Quickshell.execDetached([root.scriptPath, "start"])
-                                ToastService.showInfo("Steam", "Iniciando Big Picture...")
+                                ToastService.showInfo("Steam", "Starting Big Picture...")
                                 root.isRunning = true
                                 popoutColumn.closePopout()
                             }
                         }
                     }
 
-                    // Botón Detener
+                    // Stop Button
                     StyledRect {
                         width: (parent.width - Theme.spacingS) / 2
                         height: 40
@@ -183,7 +181,7 @@ PluginComponent {
                             }
 
                             StyledText {
-                                text: "Detener"
+                                text: "Stop"
                                 font.pixelSize: Theme.fontSizeSmall
                                 font.weight: Font.Bold
                                 color: !root.isRunning ? Theme.surfaceVariantText : Theme.error
@@ -198,7 +196,7 @@ PluginComponent {
                             enabled: root.isRunning
                             onClicked: {
                                 Quickshell.execDetached([root.scriptPath, "stop"])
-                                ToastService.showInfo("Steam", "Cerrando Steam...")
+                                ToastService.showInfo("Steam", "Closing Steam...")
                                 root.isRunning = false
                                 popoutColumn.closePopout()
                             }

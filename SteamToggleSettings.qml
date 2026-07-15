@@ -5,7 +5,7 @@ import qs.Widgets
 
 PluginSettings {
     id: root
-    pluginId: "steamToggle"
+    pluginId: "DankConsoleSteam"
 
     StyledText {
         width: parent.width
