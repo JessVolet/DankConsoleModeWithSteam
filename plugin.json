@@ -1,12 +1,16 @@
 {
-  "id": "steamToggle",
+  "id": "DankConsoleSteam",
   "name": "Steam Big Picture",
-  "description": "Interruptor para reiniciar Steam en modo Big Picture",
+  "description": "A simple widget to start steam in big picture mode with custom commands.",
   "version": "1.0.0",
-  "author": "Voletst",
+  "author": "JessVolet",
   "icon": "sports_esports",
   "type": "widget",
   "component": "./SteamToggle.qml",
   "settings": "./SteamToggleSettings.qml",
-  "permissions": ["process", "settings_read", "settings_write"]
+  "permissions": [
+    "process",
+    "settings_read",
+    "settings_write"
+  ]
 }
