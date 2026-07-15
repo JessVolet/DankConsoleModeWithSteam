@@ -1,11 +1,23 @@
-[2026-07-14 17:46:37] [start] === Starting Steam Big Picture Toggle Script ===
-[2026-07-14 17:46:37] [start] Args: USE_FLATPAK=false, USE_GAMESCOPE=true, GAMESCOPE_ARGS='-W 1920 -H 1080 -f -e', TARGET_AUDIO='', TARGET_VOLUME=100
-[2026-07-14 17:46:37] [start] START_CMD: gamescope -W 1920 -H 1080 -f -e -- env __NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia steam -gamepadui
-[2026-07-14 17:46:37] [start] Executing EXTRA_START_CMD: notify-send "Inicia comando" "Eso"
-[2026-07-14 17:46:37] [start] EXTRA_START_CMD exit code: 0
-[2026-07-14 17:46:37] [start] Starting set_audio in background
-[2026-07-14 17:46:42] [start] Executing START_CMD: gamescope -W 1920 -H 1080 -f -e -- env __NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia steam -gamepadui
-[2026-07-14 17:46:42] [start] Starting monitor in background
+[2026-07-14 18:22:56] [start] === Starting Steam Big Picture Toggle Script ===
+[2026-07-14 18:22:56] [start] Args: USE_FLATPAK=false, USE_GAMESCOPE=true, GAMESCOPE_ARGS='-W 1920 -H 1080 -f -e', TARGET_AUDIO='Nvidia', TARGET_VOLUME=100
+[2026-07-14 18:22:56] [start] START_CMD: gamescope -W 1920 -H 1080 -f -e -- env __NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia steam -gamepadui
+[2026-07-14 18:22:56] [start] Executing EXTRA_START_CMD: dms ipc outputs setProfile BigPicture
+PROFILE_SET_SUCCESS: BigPicture
+[2026-07-14 18:22:56] [start] EXTRA_START_CMD exit code: 0
+[2026-07-14 18:22:56] [start] Starting set_audio in background
+[2026-07-14 18:22:56] [start] set_audio: target device 'Nvidia' with volume '100'
+[2026-07-14 18:22:57] [start] set_audio: Attempt 1 - cycleoutput: 'Switched to: Razer USB Sound Card Analog Stereo'
+[2026-07-14 18:22:57] [start] set_audio: Attempt 2 - cycleoutput: 'Switched to: Built-in Audio Analog Stereo'
+[2026-07-14 18:22:57] [start] set_audio: Attempt 3 - cycleoutput: 'Switched to: AD107 High Definition Audio Controller Digital Stereo (HDMI)'
+[2026-07-14 18:22:57] [start] set_audio: Attempt 4 - cycleoutput: 'Switched to: Razer USB Sound Card Analog Stereo'
+[2026-07-14 18:22:58] [start] set_audio: Attempt 5 - cycleoutput: 'Switched to: Built-in Audio Analog Stereo'
+[2026-07-14 18:22:58] [start] set_audio: Attempt 6 - cycleoutput: 'Switched to: AD107 High Definition Audio Controller Digital Stereo (HDMI)'
+[2026-07-14 18:22:58] [start] set_audio: Attempt 7 - cycleoutput: 'Switched to: Razer USB Sound Card Analog Stereo'
+[2026-07-14 18:22:59] [start] set_audio: Attempt 8 - cycleoutput: 'Switched to: Built-in Audio Analog Stereo'
+[2026-07-14 18:22:59] [start] set_audio: Attempt 9 - cycleoutput: 'Switched to: AD107 High Definition Audio Controller Digital Stereo (HDMI)'
+[2026-07-14 18:22:59] [start] set_audio: Attempt 10 - cycleoutput: 'Switched to: Razer USB Sound Card Analog Stereo'
+[2026-07-14 18:23:01] [start] Executing START_CMD: gamescope -W 1920 -H 1080 -f -e -- env __NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia steam -gamepadui
+[2026-07-14 18:23:02] [start] Starting monitor in background
 [gamescope] [[0;34mInfo[0m]  [0;37mconsole:[0m gamescope version 3.16.20+ds-1 (gcc 15.2.0)
 No CAP_SYS_NICE, falling back to regular-priority compute and threads.
 Performance will be affected.
@@ -29,7 +41,7 @@ Performance will be affected.
 [gamescope] [[0;33mWarn[0m]  [0;37mscriptmgr:[0m Directory '/etc/gamescope/scripts' does not exist
 [gamescope] [[0;34mInfo[0m]  [0;37mscriptmgr:[0m Loading scripts from: '/home/vsynlo/.config/gamescope/scripts'
 [gamescope] [[0;33mWarn[0m]  [0;37mscriptmgr:[0m Directory '/home/vsynlo/.config/gamescope/scripts' does not exist
-[2026-07-14 17:46:42] [monitor] Monitor: Waiting for Steam to start (timeout 20s)...
+[2026-07-14 18:23:02] [monitor] Monitor: Waiting for Steam to start (timeout 20s)...
 [gamescope] [[0;34mInfo[0m]  [0;37mvulkan:[0m Intel device detected, forcing general queue family instead of compute-only queue
 [gamescope] [[0;34mInfo[0m]  [0;37mvulkan:[0m selecting physical device 'Intel(R) Graphics (RPL-P)': queue family 0 (general queue family 0)
 [gamescope] [[0;34mInfo[0m]  [0;37mvulkan:[0m physical device supports DRM format modifiers
@@ -56,11 +68,11 @@ Performance will be affected.
 [gamescope] [[0;34mInfo[0m]  [0;37mwlserver:[0m [xwayland/server.c:107] Starting Xwayland on :1
 [gamescope] [[0;34mInfo[0m]  [0;37mpipewire:[0m stream state changed: connecting
 [gamescope] [[0;34mInfo[0m]  [0;37mpipewire:[0m stream state changed: paused
-[gamescope] [[0;34mInfo[0m]  [0;37mpipewire:[0m stream available on node ID: 121
+[gamescope] [[0;34mInfo[0m]  [0;37mpipewire:[0m stream available on node ID: 91
 [gamescope] [[0;34mInfo[0m]  [0;37medid:[0m Patching res 800x1280 -> 1920x1080
 [gamescope] [[0;34mInfo[0m]  [0;37mvblank:[0m Using timerfd.
 [gamescope] [[0;34mInfo[0m]  [0;37mxdg_backend:[0m Post-Initted Wayland backend
-[2026-07-14 17:46:43] [monitor] Monitor: Steam is running. Monitoring process...
+[2026-07-14 18:23:04] [monitor] Monitor: Steam is running. Monitoring process...
 [gamescope] [[0;33mWarn[0m]  [0;37mxwm:[0m got the same buffer committed twice, ignoring.
 sd_bus_call(g_dbus, message, UINT64_MAX, NULL, &reply)failed with ret -30
 The XKEYBOARD keymap compiler (xkbcomp) reports:
@@ -71,114 +83,115 @@ The XKEYBOARD keymap compiler (xkbcomp) reports:
 > Warning:          Virtual modifier ScrollLock multiply defined
 >                   Using 0, ignoring 0
 Errors from xkbcomp are not fatal to the X server
-[gamescope] [[0;34mInfo[0m]  [0;37mxdg_backend:[0m Changed refresh to: 179.999hz
 [gamescope] [[0;34mInfo[0m]  [0;37mbinding:[0m (GRMarker) -> Adding new trigger [F12 + Control_L].
 [gamescope] [[0;34mInfo[0m]  [0;37mbinding:[0m (GRBackgroundRecordingToggle) -> Adding new trigger [F11 + Control_L].
 [gamescope] [[0;34mInfo[0m]  [0;37mbinding:[0m (GuideKeyboardHotkey) -> Adding new trigger [Tab + Shift_L].
 [gamescope] [[0;34mInfo[0m]  [0;37mbinding:[0m (QAMKeyboardHotkey) -> Adding new trigger [Tab + Control_L + Shift_L].
-sd_bus_call(g_dbus, message, UINT64_MAX, NULL, &reply)failed with ret -30
-sd_bus_call(g_dbus, message, UINT64_MAX, NULL, &reply)failed with ret -30
-sd_bus_call(g_dbus, message, UINT64_MAX, NULL, &reply)failed with ret -30
-[gamescope] [[0;33mWarn[0m]  [0;37mxwm:[0m D-Bus call to get unit corresponding to pid 417481 failed!
-
-[gamescope] [[0;33mWarn[0m]  [0;37mxwm:[0m D-Bus call to get unit corresponding to pid 417481 failed!
-
-[gamescope] [[0;33mWarn[0m]  [0;37mxwm:[0m D-Bus call to get unit corresponding to pid 417481 failed!
-
-[gamescope] [[0;33mWarn[0m]  [0;37mxwm:[0m D-Bus call to get unit corresponding to pid 417481 failed!
-
-[gamescope] [[0;33mWarn[0m]  [0;37mxwm:[0m D-Bus call to get unit corresponding to pid 417481 failed!
-
-[gamescope] [[0;33mWarn[0m]  [0;37mxwm:[0m D-Bus call to get unit corresponding to pid 417481 failed!
-
-[gamescope] [[0;33mWarn[0m]  [0;37mxwm:[0m D-Bus call to get unit corresponding to pid 417481 failed!
-
-[gamescope] [[0;33mWarn[0m]  [0;37mxwm:[0m D-Bus call to get unit corresponding to pid 417481 failed!
-
-[gamescope] [[0;33mWarn[0m]  [0;37mxwm:[0m D-Bus call to get unit corresponding to pid 417481 failed!
-
-[gamescope] [[0;33mWarn[0m]  [0;37mxwm:[0m D-Bus call to get unit corresponding to pid 417481 failed!
-
-[gamescope] [[0;33mWarn[0m]  [0;37mxwm:[0m D-Bus call to get unit corresponding to pid 417481 failed!
-
-[gamescope] [[0;33mWarn[0m]  [0;37mxwm:[0m D-Bus call to get unit corresponding to pid 417481 failed!
-
-[gamescope] [[0;33mWarn[0m]  [0;37mxwm:[0m D-Bus call to get unit corresponding to pid 417481 failed!
-
-[gamescope] [[0;33mWarn[0m]  [0;37mxwm:[0m D-Bus call to get unit corresponding to pid 417481 failed!
-
-[gamescope] [[0;33mWarn[0m]  [0;37mxwm:[0m D-Bus call to get unit corresponding to pid 417481 failed!
-
-[gamescope] [[0;33mWarn[0m]  [0;37mxwm:[0m D-Bus call to get unit corresponding to pid 417481 failed!
-
-[gamescope] [[0;33mWarn[0m]  [0;37mxwm:[0m D-Bus call to get unit corresponding to pid 417481 failed!
-
-[gamescope] [[0;33mWarn[0m]  [0;37mxwm:[0m D-Bus call to get unit corresponding to pid 417481 failed!
-
-[gamescope] [[0;33mWarn[0m]  [0;37mxwm:[0m D-Bus call to get unit corresponding to pid 417481 failed!
-
-[gamescope] [[0;33mWarn[0m]  [0;37mxwm:[0m D-Bus call to get unit corresponding to pid 417481 failed!
-
-[gamescope] [[0;33mWarn[0m]  [0;37mxwm:[0m D-Bus call to get unit corresponding to pid 417481 failed!
-
-[gamescope] [[0;33mWarn[0m]  [0;37mxwm:[0m D-Bus call to get unit corresponding to pid 417481 failed!
-
-[gamescope] [[0;33mWarn[0m]  [0;37mxwm:[0m D-Bus call to get unit corresponding to pid 417481 failed!
-
-[gamescope] [[0;33mWarn[0m]  [0;37mxwm:[0m D-Bus call to get unit corresponding to pid 417481 failed!
-
-[gamescope] [[0;33mWarn[0m]  [0;37mxwm:[0m D-Bus call to get unit corresponding to pid 417481 failed!
-
-[gamescope] [[0;33mWarn[0m]  [0;37mxwm:[0m D-Bus call to get unit corresponding to pid 417481 failed!
-
-[gamescope] [[0;33mWarn[0m]  [0;37mxwm:[0m D-Bus call to get unit corresponding to pid 417481 failed!
-
-[gamescope] [[0;33mWarn[0m]  [0;37mxwm:[0m D-Bus call to get unit corresponding to pid 417481 failed!
-
-[gamescope] [[0;33mWarn[0m]  [0;37mxwm:[0m D-Bus call to get unit corresponding to pid 417481 failed!
-
-[gamescope] [[0;33mWarn[0m]  [0;37mxwm:[0m D-Bus call to get unit corresponding to pid 417481 failed!
-
-[gamescope] [[0;33mWarn[0m]  [0;37mxwm:[0m D-Bus call to get unit corresponding to pid 417481 failed!
-
-[gamescope] [[0;33mWarn[0m]  [0;37mxwm:[0m D-Bus call to get unit corresponding to pid 417481 failed!
-
-[gamescope] [[0;33mWarn[0m]  [0;37mxwm:[0m D-Bus call to get unit corresponding to pid 417481 failed!
-
-[gamescope] [[0;33mWarn[0m]  [0;37mxwm:[0m D-Bus call to get unit corresponding to pid 417481 failed!
-
-[gamescope] [[0;33mWarn[0m]  [0;37mxwm:[0m D-Bus call to get unit corresponding to pid 417481 failed!
-
-[gamescope] [[0;33mWarn[0m]  [0;37mxwm:[0m D-Bus call to get unit corresponding to pid 417481 failed!
-
-[gamescope] [[0;33mWarn[0m]  [0;37mxwm:[0m D-Bus call to get unit corresponding to pid 417481 failed!
-
-[gamescope] [[0;33mWarn[0m]  [0;37mxwm:[0m D-Bus call to get unit corresponding to pid 417481 failed!
-
-[gamescope] [[0;33mWarn[0m]  [0;37mxwm:[0m D-Bus call to get unit corresponding to pid 417481 failed!
-
-[gamescope] [[0;33mWarn[0m]  [0;37mxwm:[0m D-Bus call to get unit corresponding to pid 417481 failed!
-
-[gamescope] [[0;33mWarn[0m]  [0;37mxwm:[0m D-Bus call to get unit corresponding to pid 417481 failed!
-
-[gamescope] [[0;33mWarn[0m]  [0;37mxwm:[0m D-Bus call to get unit corresponding to pid 417481 failed!
-
-[gamescope] [[0;33mWarn[0m]  [0;37mxwm:[0m D-Bus call to get unit corresponding to pid 417481 failed!
-
-[gamescope] [[0;33mWarn[0m]  [0;37mxwm:[0m D-Bus call to get unit corresponding to pid 417481 failed!
-
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
+[gamescope] [[0;31mError[0m] [0;37mxdg_backend:[0m Compositor released us but we were not acquired. Oh no.
 [gamescope] [[0;33mWarn[0m]  [0;37mxwm:[0m got the same buffer committed twice, ignoring.
-[gamescope] [[0;33mWarn[0m]  [0;37mxwm:[0m D-Bus call to get unit corresponding to pid 417481 failed!
-
-[gamescope] [[0;33mWarn[0m]  [0;37mxwm:[0m D-Bus call to get unit corresponding to pid 417481 failed!
-
-sd_bus_call(g_dbus, message, UINT64_MAX, NULL, &reply)failed with ret -30
-[gamescope] [[0;34mInfo[0m]  [0;37mbinding:[0m (GRMarker) -> Adding new trigger [F12 + Control_L].
-[gamescope] [[0;34mInfo[0m]  [0;37mbinding:[0m (GRBackgroundRecordingToggle) -> Adding new trigger [F11 + Control_L].
-[gamescope] [[0;34mInfo[0m]  [0;37mbinding:[0m (GuideKeyboardHotkey) -> Adding new trigger [Tab + Shift_L].
-[gamescope] [[0;34mInfo[0m]  [0;37mbinding:[0m (QAMKeyboardHotkey) -> Adding new trigger [Tab + Control_L + Shift_L].
+[gamescope] [[0;33mWarn[0m]  [0;37mxwm:[0m got the same buffer committed twice, ignoring.
 [gamescopereaper] [[0;34mInfo[0m]  [0;37mreaper:[0m Parent of gamescopereaper was killed. Killing children.
 (EE) failed to read Wayland events: Broken pipe
+[2026-07-14 19:02:12] [monitor] Monitor: Steam process terminated.
+[2026-07-14 19:02:12] [monitor] Monitor: Executing EXTRA_STOP_CMD: dms ipc outputs setProfile Main
+PROFILE_SET_SUCCESS: Main
 [gamescope] [[0;34mInfo[0m]  [0;37mlaunch:[0m Primary child shut down!
-[2026-07-14 17:48:55] [monitor] Monitor: Steam process terminated.
-[2026-07-14 17:48:55] [monitor] Monitor: Executing EXTRA_STOP_CMD: notify-send "Cierra comando" "pues eso"

@@ -17,50 +17,50 @@ PluginSettings {
 
     ToggleSetting {
         settingKey: "useFlatpak"
-        label: "Usar Flatpak"
-        description: "Ejecutar Steam utilizando Flatpak"
+        label: "Use Flatpak"
+        description: "Run Steam using Flatpak"
     }
 
     ToggleSetting {
         settingKey: "useGamescope"
-        label: "Usar Gamescope"
-        description: "Ejecutar Steam en modo Big Picture dentro de Gamescope"
+        label: "Use Gamescope"
+        description: "Run Steam in Big Picture mode inside Gamescope"
     }
 
     StringSetting {
         settingKey: "gamescopeArgs"
-        label: "Argumentos de Gamescope"
-        description: "Argumentos adicionales para Gamescope (ej. -W 1920 -H 1080 -f -e)"
+        label: "Gamescope Arguments"
+        description: "Additional arguments for Gamescope (e.g., -W 1920 -H 1080 -f -e)"
     }
 
     StringSetting {
         settingKey: "reopenNormalCmd"
-        label: "Comando al Cerrar"
-        description: "Comando para reabrir Steam normal cuando se cierre Big Picture (ej. steam)"
+        label: "Command on Close"
+        description: "Command to reopen normal Steam when Big Picture closes (e.g., steam)"
     }
 
     StringSetting {
         settingKey: "extraStartCmd"
-        label: "Comando Extra al Iniciar"
-        description: "Comando extra ejecutado antes de iniciar Big Picture"
+        label: "Extra Startup Command"
+        description: "Extra command executed before starting Big Picture"
     }
 
     StringSetting {
         settingKey: "extraStopCmd"
-        label: "Comando Extra al Cerrar"
-        description: "Comando extra ejecutado al cerrarse Steam para restaurar configuraciones"
+        label: "Extra Shutdown Command"
+        description: "Extra command executed when Steam closes to restore settings"
     }
 
     StringSetting {
         settingKey: "targetAudio"
-        label: "Dispositivo de Audio Objetivo"
-        description: "Parte del nombre del dispositivo de audio a buscar (ej. AD107)"
+        label: "Target Audio Device"
+        description: "Part of the audio device name to search for (e.g., AD107)"
     }
 
     SliderSetting {
         settingKey: "targetVolume"
-        label: "Volumen Objetivo"
-        description: "Volumen deseado para el dispositivo de audio"
+        label: "Target Volume"
+        description: "Desired volume for the audio device"
         minimum: 0
         maximum: 100
         unit: "%"
@@ -68,8 +68,8 @@ PluginSettings {
 
     SliderSetting {
         settingKey: "maxAudioIntentos"
-        label: "Intentos de Búsqueda"
-        description: "Número máximo de intentos para encontrar el dispositivo de audio"
+        label: "Search Attempts"
+        description: "Maximum number of attempts to find the audio device"
         minimum: 1
         maximum: 30
     }
