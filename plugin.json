@@ -1,13 +1,23 @@
 {
+  "$schema": "https://github.com/duxlabs-dev/dux-shell/raw/refs/heads/master/quickshell/PLUGINS/plugin-schema.json",
   "id": "dankConsoleSteam",
   "name": "Steam Big Picture",
   "description": "A simple widget to start steam in big picture mode with custom commands.",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "author": "JessVolet",
   "icon": "sports_esports",
   "type": "widget",
+  "capabilities": [
+    "dankbar-widget"
+  ],
   "component": "./SteamToggle.qml",
   "settings": "./SteamToggleSettings.qml",
+  "requires_dms": ">=2.0.0",
+  "dependencies": [
+    "steam",
+    "gamescope",
+    "jq"
+  ],
   "permissions": [
     "process",
     "settings_read",

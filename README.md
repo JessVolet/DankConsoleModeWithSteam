@@ -1,47 +1,82 @@
 # Steam Big Picture Toggle
 
-A DankMaterialShell widget plugin to run Steam in Big Picture mode with custom arguments, startup commands, and automated audio routing.
+A Dux Shell (formerly DankMaterialShell) widget plugin to launch Steam in Big Picture mode with custom arguments, Gamescope display presets, startup/shutdown hooks, and optional automated audio routing.
 
 ![Steam Control Panel](./screenshot.png)
 
-## About
+## Features
 
-Steam Big Picture Toggle provides a simple toggle button on your bar or control center to switch Steam into Big Picture mode. It supports running Steam natively or via Flatpak, optionally inside Gamescope with custom window arguments.
+- **Expressive Material 3 popout:** Clean card layout with squircle gaming badge, live status pill, and instant Settings shortcut.
+- **Interactive Quick Cards:** Toggle Gamescope and Flatpak runtime directly from the popout with instant visual feedback.
+- **Dynamic Hero Action:** Single full-width launch button (`Launch Big Picture`) that switches to (`Exit Big Picture`) when active.
+- **Display Presets:** Select `1080p`, `1440p`, `4K`, `720p` resolution presets and target refresh rates (`60 Hz` to `240 Hz`) without typing Gamescope flags manually.
+- **Configurable Audio Routing:** Optional audio routing toggle (`enableAudioRouting`) to cycle audio outputs through `dms ipc` and adjust target volume on launch.
+- **Process Efficiency:** Adaptive polling (15s when closed, 3s when open, 2s during transition) with zero-overhead status checks.
+- **Bounded Logging:** Logs are stored in `$XDG_CACHE_HOME/dankConsoleSteam/steam_toggle.log` with a strict 64 KiB ceiling.
 
-This plugin integrates with shell features — you can specify custom startup and shutdown commands (such as switching monitor output profiles via `dms ipc`) and automatically target specific audio devices (like an HDMI TV) and set the volume.
+## Dependencies
 
-## Install
+- `steam` (native package or Flatpak `com.valvesoftware.Steam`)
+- `gamescope` (optional, for custom resolution, scaling, and gamescope features)
+- `jq` (required, for parsing plugin settings)
+- `pciutils` (optional, `lspci` is used as a fallback if `nvidia-smi` is unavailable)
 
-### Plugin manager
+## Installation
 
-The plugin can be installed from the plugin browser in DankMaterialShell.
+### Registry (Recommended)
 
-### Manual install
-
-1. Download or clone this repository.
-2. Extract or symlink it into your DankMaterialShell plugins directory:
+Install directly via the Dux Shell plugin manager or CLI:
 
 ```bash
-ln -sf /path/to/DankConsoleModeWithSteam "${XDG_CONFIG_HOME:-$HOME/.config}/DankMaterialShell/plugins/SteamToggle"
+dms plugins install dankConsoleSteam
 ```
 
-3. Open DankMaterialShell Settings → Plugins, click "Scan for Plugins", and enable **Steam Big Picture**.
-4. Add the widget to your DankBar widgets list.
+### Manual Install
+
+1. Clone or download this repository:
+
+```bash
+git clone https://github.com/JessVolet/DankConsoleModeWithSteam.git
+```
+
+2. Symlink it into your Dux Shell plugins directory:
+
+```bash
+ln -sf /path/to/DankConsoleModeWithSteam "${XDG_CONFIG_HOME:-$HOME/.config}/dms/plugins/dankConsoleSteam"
+```
+
+3. Open **Dux Shell Settings → Plugins**, click **Scan for Plugins**, and enable **Steam Big Picture**.
+4. Add the widget to your bar or Control Center.
 
 ## IPC Commands
 
-Control the toggle via DMS IPC:
+Control the plugin via Dux Shell / DMS IPC:
 
 | Command | Description |
 | --- | --- |
-| `dms ipc call plugins reload DankConsoleSteam` | Reload the plugin at runtime |
+| `dms ipc call plugins reload dankConsoleSteam` | Reload the plugin at runtime |
 
-## Customization
+## Configuration
 
-Configure the following settings in DMS Settings under **Steam Big Picture Settings**:
-- **Use Flatpak**: Run Steam via Flatpak (`com.valvesoftware.Steam`) or natively.
-- **Use Gamescope**: Run Steam inside Gamescope.
-- **Gamescope Arguments**: Arguments for Gamescope window (e.g., `-W 1920 -H 1080 -f -e`).
-- **Command on Close**: Program to run when Big Picture exits (e.g., `steam` to reopen normal desktop client).
-- **Extra Startup / Shutdown Commands**: Command hooks executed before start and after exit (e.g. `dms ipc outputs setProfile BigPicture`).
-- **Target Audio Device / Volume / Attempts**: Target audio device name, volume, and search retries to automatically route audio to the gaming screen on startup.
+Configure options in Dux Shell Settings under **Steam Big Picture Settings**:
+
+### Launch Mode
+- **Use Flatpak**: Run Steam via Flatpak (`com.valvesoftware.Steam`) or native package.
+- **Use Gamescope**: Run Steam inside the Gamescope micro-compositor.
+
+### Gamescope & Display
+- **Resolution Preset**: Select `1080p`, `1440p`, `4K`, `720p`, or `Custom (from Arguments)`.
+- **Refresh Rate**: Target display refresh rate (e.g., `60 Hz`, `120 Hz`, `144 Hz`, `165 Hz`, `240 Hz`).
+- **Fullscreen Mode**: Run Gamescope in fullscreen mode (`-f`).
+- **NVIDIA Prime Offload**: Auto-detect NVIDIA GPU, force offload, or disable.
+- **Additional Gamescope Arguments**: Custom flags passed directly to Gamescope (e.g., `-b --force-grab-cursor`).
+
+### Audio Routing
+- **Enable Audio Routing**: Enable or disable automatic audio device switching on startup.
+- **Target Audio Device**: Substring of the device name (e.g., `HDMI`, `TV`, `AD107`).
+- **Target Volume**: Desired volume percentage (0–100%).
+- **Audio Search Attempts**: Maximum retries when cycling audio devices.
+
+### Lifecycle Commands
+- **Command on Close**: Program to run when Big Picture exits (e.g., `steam` to reopen desktop client).
+- **Extra Startup / Shutdown Commands**: Command hooks executed before start and after exit (e.g., `dms ipc outputs setProfile Gaming`).
